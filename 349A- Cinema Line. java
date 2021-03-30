@@ -1,0 +1,44 @@
+import java.util.*;
+ 
+public class FirstClass {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		long c25, c50, c100;
+		boolean flag=false;
+		c25 = c50 = c100 = 0;
+		for (long i = 0; i < n; i++) {
+			long x = sc.nextInt();
+			if (x == 25) {
+				c25++;
+			} else {
+				if (x == 50) {
+					c25--;
+					c50++;
+				} else {
+					if (c25 > 0 && c50 > 0) {
+						c25--;
+						c50--;
+						c100++;
+					} else {
+						c25 -= 3;
+						c100++;
+					}
+				}
+			}
+			if(c25<0 || c50<0 || c100<0)
+			{
+				flag=true;
+			}
+		}
+		
+		if(c25>=0 && c50>=0 && c100>=0 && flag==false)
+		{
+			System.out.print("YES");
+		}
+		else
+		{
+			System.out.print("NO");
+		}
+	}
+}
